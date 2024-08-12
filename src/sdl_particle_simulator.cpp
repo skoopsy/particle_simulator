@@ -69,6 +69,7 @@ int main() {
 	Uint32 *buffer = new Uint32[SCREEN_WIDTH*SCREEN_HEIGHT];
 
 	// Simple static update window in a fixed colour:
+<<<<<<< HEAD
 	// Set value of everything in buffer to 0 (white)
 	memset(buffer, 0, SCREEN_WIDTH*SCREEN_HEIGHT*sizeof(Uint32));
 
@@ -79,7 +80,12 @@ int main() {
 
 
 	// Update renderer
+=======
+	// Set colour for all pixels
+	memset(buffer, 0xFF, SCREEN_WIDTH*SCREEN_HEIGHT*sizeof(Uint32));
+>>>>>>> e278fa7 (updated gitignore)
 
+	// Update renderer
 	int screen_pitch = SCREEN_WIDTH*sizeof(Uint32);
 	SDL_UpdateTexture(texture, NULL, buffer, screen_pitch);
 	SDL_RenderClear(renderer);
