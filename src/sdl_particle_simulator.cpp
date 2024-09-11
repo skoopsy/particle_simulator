@@ -72,10 +72,12 @@ int main() {
 	}
 
 
+
 	// Allocate memory for texture, 4 bytes per pixel: RGBA
 	Uint32 *buffer = new Uint32[SCREEN_WIDTH*SCREEN_HEIGHT];
 
 	// Simple static update window in a fixed colour:
+
 
 	// Set value of everything in buffer to 0 (white)
 	memset(buffer, 0, SCREEN_WIDTH*SCREEN_HEIGHT*sizeof(Uint32));
