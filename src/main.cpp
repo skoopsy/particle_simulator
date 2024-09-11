@@ -21,6 +21,7 @@ int main() {
 	// --- Main game loop --- //
 	while (true) {
 
+
 		// Update Particles
 		// Draw particles
 		// Check for messages/events
