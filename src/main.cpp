@@ -18,21 +18,16 @@ int main() {
 		std::cout << "Error initialising SDL." << std::endl;
 	}
 
-	// Quit check
-	bool quit = false;
-	SDL_Event event;
 
 	// --- Main game loop --- //
-	while (!quit) {
+	while (true) {
 		// Update Particles
 		// Draw particles
 		// Check for messages/events
 
-		// Check if quit has been pressed on the window decorator:
-		while (SDL_PollEvent(&event)) {
-			if (event.type == SDL_QUIT) {
-				quit = true;
-			}
+		// Quit check
+		if(screen.processEvents() == false ) {
+			break;
 		}
 	}
 
