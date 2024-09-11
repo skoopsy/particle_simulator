@@ -81,7 +81,15 @@ bool Screen::init() {
 
 }
 bool Screen::processEvents() {
-	return false;
+	// Check for quit button on window GUI dectorator
+	SDL_Event event;
+	while (SDL_PollEvent(&event)) {
+		if (event.type == SDL_QUIT) {
+			return false;
+		}
+	}
+
+	return true;
 
 }
 void Screen::close() {
