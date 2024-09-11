@@ -19,11 +19,6 @@ int main() {
 		std::cout << "Error initialising SDL." << std::endl;
 	}
 
-
-	// Quit check
-	bool quit = false;
-	SDL_Event event;
-
 	// --- Main game loop --- //
 	while (!quit) {
 		// Update Particles
@@ -37,7 +32,6 @@ int main() {
 			}
 		}
 	}
-
 
 	screen.close();
 
