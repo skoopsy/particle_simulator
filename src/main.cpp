@@ -9,11 +9,16 @@
 #include <iostream>
 #include <SDL.h>
 #include <math.h> // for sin function
+#include <stdlib.h> // for srand to seed rand num generator
+#include <time.h> // for seeding rand num
 
 #include "Screen.h"
 
 
 int main() {
+
+	// Random number gen seed based on time value
+	srand(time(NULL));
 
 	dave_graphics::Screen screen;
 
@@ -39,7 +44,9 @@ int main() {
 				screen.setPixel(x, y, red, green, blue);
 			}
 		}
-		screen.setPixel(400, 300, 255, 255, 255); // set white pixel in middle of frame
+
+		// set white pixel in middle of frame
+		screen.setPixel(400, 300, 255, 255, 255);
 
 		// Draw the screen
 		screen.update();
