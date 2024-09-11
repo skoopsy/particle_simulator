@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <SDL.h>
+<<<<<<< HEAD
 #include <math.h> // for sin function
 #include <stdlib.h> // for srand to seed rand num generator
 #include <time.h> // for seeding rand num
@@ -24,10 +25,19 @@ int main() {
 
 	// Initialise Sceen instance
 	dave_graphics::Screen screen;
+=======
+#include "Screen.h"
+
+int main() {
+
+	dave_graphics::Screen screen;
+
+>>>>>>> 22e5ed0 (refactored Screen, successful build-run)
 	if(screen.init() == false) {
 		std::cout << "Error initialising SDL." << std::endl;
 	}
 
+<<<<<<< HEAD
 	// Initialise swarm of particles
 	dave_graphics::Swarm swarm;
 
@@ -61,6 +71,27 @@ int main() {
 		}
 	}
 
+=======
+	// Quit check
+	bool quit = false;
+	SDL_Event event;
+
+	// --- Main game loop --- //
+	while (!quit) {
+		// Update Particles
+		// Draw particles
+		// Check for messages/events
+
+		// Check if quit has been pressed on the window decorator:
+		while (SDL_PollEvent(&event)) {
+			if (event.type == SDL_QUIT) {
+				quit = true;
+			}
+		}
+	}
+
+
+>>>>>>> 22e5ed0 (refactored Screen, successful build-run)
 	screen.close();
 
 	return 0;
