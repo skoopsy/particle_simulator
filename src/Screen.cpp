@@ -80,6 +80,7 @@ bool Screen::init() {
 	return true;
 
 }
+
 bool Screen::processEvents() {
 	// Check for quit button on window GUI dectorator
 	SDL_Event event;
@@ -92,12 +93,16 @@ bool Screen::processEvents() {
 	return true;
 
 }
+
+
+
 void Screen::close() {
-	// Update renderer
-	int screen_pitch = SCREEN_WIDTH*sizeof(Uint32);
-	SDL_UpdateTexture(m_texture, NULL, m_buffer, screen_pitch);
-	SDL_RenderClear(m_renderer);
-	SDL_RenderCopy(m_renderer, m_texture, NULL, NULL); // NULLs: copies entire renderer and entire texture
-	SDL_RenderPresent(m_renderer);
+
+	delete [] m_buffer;
+	SDL_DestroyRenderer(m_renderer);
+	SDL_DestroyTexture(m_texture);
+	SDL_DestroyWindow(m_window);
+	SDL_Quit();
+}
 
 } /* namespace dave_graphics */
