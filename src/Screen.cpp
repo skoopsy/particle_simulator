@@ -65,19 +65,17 @@ bool Screen::init() {
 		// Set value of everything in buffer to 0 (white)
 		memset(m_buffer, 0, SCREEN_WIDTH*SCREEN_HEIGHT*sizeof(Uint32));
 
-
-		// Set color per pixel, using hexi-decimal for RGBA, each channel is a byte.
-		for(int i=0; i < SCREEN_WIDTH*SCREEN_HEIGHT; i++) {
-			m_buffer[i] = 0xFF00FFFF;
-		}
-		// Update renderer
-		int screen_pitch = SCREEN_WIDTH*sizeof(Uint32); // might not be needed
-		SDL_UpdateTexture(m_texture, NULL, m_buffer, screen_pitch);
-		SDL_RenderClear(m_renderer);
-		SDL_RenderCopy(m_renderer, m_texture, NULL, NULL); // NULLs: copies entire renderer and entire texture
-		SDL_RenderPresent(m_renderer);
-
 	return true;
+
+}
+
+void Screen::update() {
+	// Update renderer
+	int screen_pitch = SCREEN_WIDTH*sizeof(Uint32); // might not be needed
+	SDL_UpdateTexture(m_texture, NULL, m_buffer, screen_pitch);
+	SDL_RenderClear(m_renderer);
+	SDL_RenderCopy(m_renderer, m_texture, NULL, NULL); // NULLs: copies entire renderer and entire texture
+	SDL_RenderPresent(m_renderer);
 
 }
 
