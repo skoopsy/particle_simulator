@@ -23,7 +23,12 @@ int main() {
 	while (!quit) {
 		// Update Particles
 		// Draw particles
-		// Check for messages/events
+		for(int y=0; y < dave_graphics::Screen::SCREEN_HEIGHT; y++) { // for each row
+			for(int x=0; x < dave_graphics::Screen::SCREEN_WIDTH; x++) { // for each column
+				screen.setPixel(x, y, 128, 0, 255);
+			}
+		}
+		screen.setPixel(400, 300, 255, 255, 255); // set white pixel in middle of frame
 
 		// Draw the screen
 		screen.update();
