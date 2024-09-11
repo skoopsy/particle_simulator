@@ -26,6 +26,9 @@ int main() {
 		// Draw particles
 		// Check for messages/events
 
+		// Draw the screen
+		screen.update();
+
 		// Quit check
 		if(screen.processEvents() == false ) {
 			break;
