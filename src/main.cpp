@@ -13,6 +13,8 @@
 #include <time.h> // for seeding rand num
 
 #include "Screen.h"
+#include "Swarm.h"
+#include "Particle.h"
 
 
 int main() {
@@ -20,20 +22,33 @@ int main() {
 	// Random number gen seed based on time value
 	srand(time(NULL));
 
+	// Initialise Sceen instance
 	dave_graphics::Screen screen;
-
 	if(screen.init() == false) {
 		std::cout << "Error initialising SDL." << std::endl;
 	}
 
+	// Initialise swarm of particles
+	dave_graphics::Swarm swarm;
 
 	// --- Main game loop --- //
 	while (true) {
 
 		// Draw particles
+		const dave_graphics::Particle * const pParticles = swarm.getParticles();
 
+		// loop through all particles
+		for(int i=0; i<dave_graphics::Swarm::N_PARTICLES; i++) {
+			dave_graphics::Particle particle = pParticles[i];
+
+			int x = (particle.m_x + 1) * dave_graphics::Screen::SCREEN_WIDTH/2 ;
+		}
+
+		/*
 		// Cycle color values
 		int timeElapsed = SDL_GetTicks();
+
+
 		unsigned char green = ((1 + sin(timeElapsed * 0.001))/2) * 255; // Using sin to cyclically change the value based on time elapsed, casts into char
 		unsigned char red = ((1 + sin(timeElapsed * 0.002))/2) * 255; // Using sin to cyclically change the value based on time elapsed, casts into char
 		unsigned char blue = ((1 + sin(timeElapsed * 0.003))/2) * 255; // Using sin to cyclically change the value based on time elapsed, casts into char
@@ -44,6 +59,7 @@ int main() {
 				screen.setPixel(x, y, red, green, blue);
 			}
 		}
+		*/
 
 		// set white pixel in middle of frame
 		screen.setPixel(400, 300, 255, 255, 255);
