@@ -72,6 +72,7 @@ bool Screen::init() {
 void Screen::setPixel(int x, int y, Uint8 red, Uint8 green, Uint8 blue) {
 
 	// Check if pixel is plotted out of bounds - could make more efficient
+	// could be more efficient by being more careful with how the rand val is generated to never be 1 or 0.
 	if(x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT) {
 		return;
 	}
