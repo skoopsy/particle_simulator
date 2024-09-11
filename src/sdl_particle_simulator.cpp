@@ -3,7 +3,7 @@
 // Author      : David O'Connor
 // Version     : 0.001
 // Copyright   : 2024
-// Description : Small particle simulator using sdl C++, Ansi-style
+// Description : Small particle simulator using SDL C++, Ansi-style
 //============================================================================
 
 #include <iostream>
@@ -22,21 +22,28 @@ int main() {
 
 	// Initialise a window
 	SDL_Window *window = SDL_CreateWindow("Particle Fire Explosion",
-	SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH,
-			SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+										  SDL_WINDOWPOS_UNDEFINED,
+										  SDL_WINDOWPOS_UNDEFINED,
+										  SCREEN_WIDTH, SCREEN_HEIGHT,
+										  SDL_WINDOW_SHOWN);
 
-	// window initialisation failing will return a null
+	// Window initialisation, failing will return a null
 	if (window == NULL) {
 		SDL_Quit();
 		return 2;
 	}
 
-	// Init renderer and texture
+	// Initialise renderer using window instance
 	SDL_Renderer *renderer = SDL_CreateRenderer(window, -1,
-			SDL_RENDERER_PRESENTVSYNC);
-	SDL_Texture *texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888,
-			SDL_TEXTUREACCESS_STATIC, SCREEN_WIDTH, SCREEN_HEIGHT);
+												SDL_RENDERER_PRESENTVSYNC);
 
+	// Initialise texture from renderer
+	SDL_Texture *texture = SDL_CreateTexture(renderer,
+											 SDL_PIXELFORMAT_RGBA8888,
+											 SDL_TEXTUREACCESS_STATIC,
+											 SCREEN_WIDTH, SCREEN_HEIGHT);
+
+	// Basic error handling for renderer and texture
 	if(renderer == NULL) {
 		std::cout << "Renderer could not be created" << std::endl;
 		SDL_DestroyWindow(window);
@@ -56,7 +63,7 @@ int main() {
 	Uint32 *buffer = new Uint32[SCREEN_WIDTH*SCREEN_HEIGHT];
 
 	// Simple static update window in a fixed colour:
-	// Set colour for all pixels
+	// Set colour for all pixels (all bytes in buffer, hexdecimal white for now)
 	memset(buffer, 0xFF, SCREEN_WIDTH*SCREEN_HEIGHT*sizeof(Uint32));
 
 	// Update renderer
@@ -66,7 +73,7 @@ int main() {
 	SDL_RenderCopy(renderer, texture, NULL, NULL); // NULLs: copies entire renderer and entire texture
 	SDL_RenderPresent(renderer);
 
-	// for quit check
+	// Quit check
 	bool quit = false;
 	SDL_Event event;
 
