@@ -8,11 +8,16 @@
 
 #include <iostream>
 #include <SDL.h>
+<<<<<<< HEAD
 #include <math.h> // for sin function
 
 #include "Screen.h"
 
 
+=======
+#include "Screen.h"
+
+>>>>>>> 22e5ed0 (refactored Screen, successful build-run)
 int main() {
 
 	dave_graphics::Screen screen;
@@ -21,6 +26,7 @@ int main() {
 		std::cout << "Error initialising SDL." << std::endl;
 	}
 
+<<<<<<< HEAD
 
 	// --- Main game loop --- //
 	while (true) {
@@ -52,6 +58,27 @@ int main() {
 		}
 	}
 
+=======
+	// Quit check
+	bool quit = false;
+	SDL_Event event;
+
+	// --- Main game loop --- //
+	while (!quit) {
+		// Update Particles
+		// Draw particles
+		// Check for messages/events
+
+		// Check if quit has been pressed on the window decorator:
+		while (SDL_PollEvent(&event)) {
+			if (event.type == SDL_QUIT) {
+				quit = true;
+			}
+		}
+	}
+
+
+>>>>>>> 22e5ed0 (refactored Screen, successful build-run)
 	screen.close();
 
 	return 0;
