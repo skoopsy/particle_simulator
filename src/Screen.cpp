@@ -69,6 +69,22 @@ bool Screen::init() {
 
 }
 
+void Screen::setPixel(int x, int y, Uint8 red, Uint8 green, Uint8 blue) {
+	Uint32 color = 0;
+
+	//bit shifting to lump RGBA values into a 4 byte hex number
+	color += red;
+	color <<= 8;
+	color += green;
+	color <<= 8;
+	color += blue;
+	color <<= 8;
+	color += 0xFF;
+
+	// set pixel in the buffer based on "row" (y) and "column" (x)
+	m_buffer[(y * SCREEN_WIDTH) + x] = color;
+}
+
 void Screen::update() {
 	// Update renderer
 	int screen_pitch = SCREEN_WIDTH*sizeof(Uint32); // might not be needed
