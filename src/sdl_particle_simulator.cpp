@@ -22,7 +22,6 @@ int main() {
 
 	// Initialise a window
 	SDL_Window *window = SDL_CreateWindow("Particle Fire Explosion",
-<<<<<<< HEAD
 										  SDL_WINDOWPOS_UNDEFINED,
 										  SDL_WINDOWPOS_UNDEFINED,
 										  SCREEN_WIDTH, SCREEN_HEIGHT,
@@ -30,12 +29,13 @@ int main() {
 
 	// Window initialisation, failing will return a null
 
+
 	if (window == NULL) {
 		SDL_Quit();
 		return 2;
 	}
 
-<<<<<<< HEAD
+
 	// Initialise renderer using window instance
 	SDL_Renderer *renderer = SDL_CreateRenderer(window, -1,
 												SDL_RENDERER_PRESENTVSYNC);
@@ -48,6 +48,14 @@ int main() {
 
 	// Basic error handling for renderer and texture
 
+
+	// Initialise texture from renderer
+	SDL_Texture *texture = SDL_CreateTexture(renderer,
+											 SDL_PIXELFORMAT_RGBA8888,
+											 SDL_TEXTUREACCESS_STATIC,
+											 SCREEN_WIDTH, SCREEN_HEIGHT);
+
+	// Basic error handling for renderer and texture
 	if(renderer == NULL) {
 		std::cout << "Renderer could not be created" << std::endl;
 		SDL_DestroyWindow(window);
@@ -63,13 +71,12 @@ int main() {
 		return 4;
 	}
 
-<<<<<<< HEAD
 
 	// Allocate memory for texture, 4 bytes per pixel: RGBA
 	Uint32 *buffer = new Uint32[SCREEN_WIDTH*SCREEN_HEIGHT];
 
 	// Simple static update window in a fixed colour:
-<<<<<<< HEAD
+
 	// Set value of everything in buffer to 0 (white)
 	memset(buffer, 0, SCREEN_WIDTH*SCREEN_HEIGHT*sizeof(Uint32));
 
@@ -80,20 +87,11 @@ int main() {
 
 
 	// Update renderer
-=======
-	// Set colour for all pixels
-	memset(buffer, 0xFF, SCREEN_WIDTH*SCREEN_HEIGHT*sizeof(Uint32));
->>>>>>> e278fa7 (updated gitignore)
-
-	// Update renderer
 	int screen_pitch = SCREEN_WIDTH*sizeof(Uint32);
 	SDL_UpdateTexture(texture, NULL, buffer, screen_pitch);
 	SDL_RenderClear(renderer);
 	SDL_RenderCopy(renderer, texture, NULL, NULL); // NULLs: copies entire renderer and entire texture
 	SDL_RenderPresent(renderer);
-
-<<<<<<< HEAD
-	// Quit check
 
 
 	bool quit = false;
