@@ -20,11 +20,6 @@ int main() {
 	}
 
 
-	// Quit check
-	bool quit = false;
-	SDL_Event event;
-
-
 	// --- Main game loop --- //
 	while (true) {
 		// Update Particles
@@ -36,7 +31,6 @@ int main() {
 			break;
 		}
 	}
-
 
 	screen.close();
 
