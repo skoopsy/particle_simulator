@@ -25,11 +25,12 @@ int main() {
 		// Draw particles
 		// Check for messages/events
 
-		// Check if quit has been pressed on the window decorator:
-		while (SDL_PollEvent(&event)) {
-			if (event.type == SDL_QUIT) {
-				quit = true;
-			}
+		// Draw the screen
+		screen.update();
+
+		// Quit check
+		if(screen.processEvents() == false ) {
+			break;
 		}
 	}
 
