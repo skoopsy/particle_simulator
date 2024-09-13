@@ -28,6 +28,7 @@ int main() {
 										  SDL_WINDOW_SHOWN);
 
 	// Window initialisation, failing will return a null
+
 	if (window == NULL) {
 		SDL_Quit();
 		return 2;
@@ -63,7 +64,9 @@ int main() {
 	Uint32 *buffer = new Uint32[SCREEN_WIDTH*SCREEN_HEIGHT];
 
 	// Simple static update window in a fixed colour:
+
 	// Set colour for all pixels (all bytes in buffer, hexdecimal white for now)
+
 	memset(buffer, 0xFF, SCREEN_WIDTH*SCREEN_HEIGHT*sizeof(Uint32));
 
 	// Update renderer
@@ -73,7 +76,9 @@ int main() {
 	SDL_RenderCopy(renderer, texture, NULL, NULL); // NULLs: copies entire renderer and entire texture
 	SDL_RenderPresent(renderer);
 
+
 	// Quit check
+
 	bool quit = false;
 	SDL_Event event;
 
