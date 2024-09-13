@@ -18,6 +18,7 @@ struct Particle { // class and struct, in a struct the members are public by def
 public:
 	Particle();
 	virtual ~Particle();
+	void update();
 };
 
 } /* namespace dave_graphics */
