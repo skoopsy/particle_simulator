@@ -59,6 +59,7 @@ int main() {
 		return 4;
 	}
 
+
 	// Allocate memory for texture, 4 bytes per pixel: RGBA
 	Uint32 *buffer = new Uint32[SCREEN_WIDTH*SCREEN_HEIGHT];
 
@@ -71,6 +72,7 @@ int main() {
 		buffer[i] = 0xFF00FFFF;
 	}
 
+
 	// Update renderer
 	int screen_pitch = SCREEN_WIDTH*sizeof(Uint32);
 	SDL_UpdateTexture(texture, NULL, buffer, screen_pitch);
@@ -79,6 +81,7 @@ int main() {
 	SDL_RenderPresent(renderer);
 
 	// Quit check
+
 	bool quit = false;
 	SDL_Event event;
 
