@@ -28,7 +28,6 @@ int main() {
 										  SDL_WINDOW_SHOWN);
 
 	// Window initialisation, failing will return a null
-
 	if (window == NULL) {
 		SDL_Quit();
 		return 2;
@@ -60,14 +59,19 @@ int main() {
 		return 4;
 	}
 
-	// Allocate memory for texture
+
+	// Allocate memory for texture, 4 bytes per pixel: RGBA
 	Uint32 *buffer = new Uint32[SCREEN_WIDTH*SCREEN_HEIGHT];
 
 	// Simple static update window in a fixed colour:
+	// Set value of everything in buffer to 0 (white)
+	memset(buffer, 0, SCREEN_WIDTH*SCREEN_HEIGHT*sizeof(Uint32));
 
-	// Set colour for all pixels (all bytes in buffer, hexdecimal white for now)
+	// Set color per pixel, using hexi-decimal for RGBA, each channel is a byte.
+	for(int i=0; i < SCREEN_WIDTH*SCREEN_HEIGHT; i++) {
+		buffer[i] = 0xFF00FFFF;
+	}
 
-	memset(buffer, 0xFF, SCREEN_WIDTH*SCREEN_HEIGHT*sizeof(Uint32));
 
 	// Update renderer
 	int screen_pitch = SCREEN_WIDTH*sizeof(Uint32);
@@ -75,7 +79,6 @@ int main() {
 	SDL_RenderClear(renderer);
 	SDL_RenderCopy(renderer, texture, NULL, NULL); // NULLs: copies entire renderer and entire texture
 	SDL_RenderPresent(renderer);
-
 
 	// Quit check
 
