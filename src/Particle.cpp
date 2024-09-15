@@ -22,10 +22,11 @@ Particle::~Particle() {
 }
 
 void Particle::update() {
-	const double speed = 0.01;
+	const double xspeed = 0.005 * ((2.0 * rand())/RAND_MAX - 1);
+	const double yspeed = 0.005 * ((2.0 * rand())/RAND_MAX - 1);
 
-	m_x += speed;
-	m_y += speed;
+	m_x += xspeed;
+	m_y += yspeed;
 
 }
 

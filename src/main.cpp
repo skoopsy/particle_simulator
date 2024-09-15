@@ -35,6 +35,7 @@ int main() {
 	while (true) {
 
 		// Update particle positions
+		screen.clear();
 		swarm.update();
 
 		// Cycle color values
