@@ -18,11 +18,4 @@ Swarm::~Swarm() {
 	delete [] m_pParticles;
 }
 
-void Swarm::update() {
-	for(int i=0; i<dave_graphics::Swarm::N_PARTICLES; i++) {
-		m_pParticles[i].update();
-		}
-
-}
-
 } /* namespace dave_graphics */

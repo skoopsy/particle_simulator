@@ -22,7 +22,7 @@ int main() {
 	// Random number gen seed based on time value
 	srand(time(NULL));
 
-	// Initialise Screen instance
+	// Initialise Sceen instance
 	dave_graphics::Screen screen;
 	if(screen.init() == false) {
 		std::cout << "Error initialising SDL." << std::endl;
@@ -34,10 +34,6 @@ int main() {
 	// --- Main game loop --- //
 	while (true) {
 
-		// Update particle positions
-		screen.clear();
-		swarm.update();
-
 		// Cycle color values
 		int timeElapsed = SDL_GetTicks();
 		unsigned char green = ((1 + sin(timeElapsed * 0.001))/2) * 255; // Using sin to cyclically change the value based on time elapsed, casts into char
@@ -45,7 +41,6 @@ int main() {
 		unsigned char blue = ((1 + sin(timeElapsed * 0.003))/2) * 255; // Using sin to cyclically change the value based on time elapsed, casts into char
 
 		// Draw Particles
-
 		const dave_graphics::Particle * const pParticles = swarm.getParticles();
 
 		for(int i=0; i<dave_graphics::Swarm::N_PARTICLES; i++) {

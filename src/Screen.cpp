@@ -9,12 +9,10 @@
 
 namespace dave_graphics {
 
-
 Screen::Screen() :
 		m_window(NULL), m_renderer(NULL), m_texture(NULL), m_buffer(NULL) {
 
 }
-
 
 bool Screen::init() {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -35,8 +33,7 @@ bool Screen::init() {
 		}
 
 		// Initialise renderer using window instance
-		m_renderer = SDL_CreateRenderer(m_window,
-										-1,
+		m_renderer = SDL_CreateRenderer(m_window, -1,
 										SDL_RENDERER_PRESENTVSYNC);
 
 		// Initialise texture from renderer
@@ -72,21 +69,17 @@ bool Screen::init() {
 
 }
 
-void Screen::clear(){
-	// Clear buffer / set to 0.
-	memset(m_buffer, 0, SCREEN_WIDTH*SCREEN_HEIGHT*sizeof(Uint32));
-}
-
 void Screen::setPixel(int x, int y, Uint8 red, Uint8 green, Uint8 blue) {
 
 	// Check if pixel is plotted out of bounds - could make more efficient
-	// could be more efficient?
+	// could be more efficient by being more careful with how the rand val is generated to never be 1 or 0.
 	if(x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT) {
 		return;
 	}
 
-	//bit shifting to lump RGBA values into a 4 byte hex number
 	Uint32 color = 0;
+
+	//bit shifting to lump RGBA values into a 4 byte hex number
 	color += red;
 	color <<= 8;
 	color += green;
@@ -99,7 +92,6 @@ void Screen::setPixel(int x, int y, Uint8 red, Uint8 green, Uint8 blue) {
 	m_buffer[(y * SCREEN_WIDTH) + x] = color;
 }
 
-
 void Screen::update() {
 	// Update renderer
 	int screen_pitch = SCREEN_WIDTH*sizeof(Uint32); // might not be needed
@@ -109,7 +101,6 @@ void Screen::update() {
 	SDL_RenderPresent(m_renderer);
 
 }
-
 
 bool Screen::processEvents() {
 	// Check for quit button on window GUI dectorator
@@ -125,7 +116,9 @@ bool Screen::processEvents() {
 }
 
 
+
 void Screen::close() {
+
 	delete [] m_buffer;
 	SDL_DestroyRenderer(m_renderer);
 	SDL_DestroyTexture(m_texture);
