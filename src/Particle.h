@@ -15,9 +15,15 @@ struct Particle { // class and struct, in a struct the members are public by def
 	double m_x;
 	double m_y;
 
+	// fluctuate particle speeds around 0, + and -.
+	double m_xspeed;
+	double m_yspeed;
+
+
 public:
 	Particle();
 	virtual ~Particle();
+	void update();
 };
 
 } /* namespace dave_graphics */
