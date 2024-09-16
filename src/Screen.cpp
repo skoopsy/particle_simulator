@@ -104,10 +104,8 @@ void Screen::boxBlur(){
 					int currentX = x + col;
 					int currentY = y + row;
 
-					if(currentX >= 0
-					&& currentX < Screen::SCREEN_WIDTH
-					&& currentY >= 0
-					&& currentY < Screen::SCREEN_HEIGHT) {
+					if(currentX >= 0 && currentX < Screen::SCREEN_WIDTH
+					   && currentY >= 0 && currentY < Screen::SCREEN_HEIGHT) {
 
 						// get color value at pixel index
 						Uint32 color = m_buffer2[currentY * Screen::SCREEN_WIDTH + currentX];

@@ -12,16 +12,25 @@
 namespace dave_graphics {
 
 Particle::Particle(): m_x(0), m_y(0) {
-
-	m_direction = (2 * M_PI * rand())/RAND_MAX;
-	m_speed = (0.0005 * rand())/RAND_MAX;
+	init();
 }
 
+void Particle::init() {
+	// Set random normalised direction and speed of particle
+	m_direction = (2 * M_PI * rand())/RAND_MAX;
+	m_speed = (0.03 * rand())/RAND_MAX;
+
+	// make speed differences between particles greater
+	m_speed *= m_speed; // squared
+}
 Particle::~Particle() {
 	// TODO Auto-generated destructor stub
 }
 
 void Particle::update(int interval) {
+
+	// make the particle curve
+	m_direction += 0.0002 * interval;
 
 	double xspeed = m_speed * cos(m_direction);
 	double yspeed = m_speed * sin(m_direction);
@@ -29,6 +38,11 @@ void Particle::update(int interval) {
 	// Move particles by amount proportional to time elapsed, will be similar for diff systems
 	m_x += xspeed * interval;
 	m_y += yspeed * interval;
+
+	// reinitialise a particle if it goes out of bounds
+	if(m_x < -1 || m_x > 1 || m_y < -1 || m_x > 1) {
+		init();
+	}
 }
 
 } /* namespace dave_graphics */

@@ -41,9 +41,9 @@ int main() {
 		swarm.update(timeElapsed);
 
 		// Cycle color values
-		unsigned char green = ((1 + sin(timeElapsed * 0.001))/2) * 255; // Using sin to cyclically change the value based on time elapsed, casts into char
-		unsigned char red = ((1 + sin(timeElapsed * 0.002))/2) * 255; // Using sin to cyclically change the value based on time elapsed, casts into char
-		unsigned char blue = ((1 + sin(timeElapsed * 0.003))/2) * 255; // Using sin to cyclically change the value based on time elapsed, casts into char
+		unsigned char green = ((1 + sin(timeElapsed * 0.0001))/2) * 255; // Using sin to cyclically change the value based on time elapsed, casts into char
+		unsigned char red = ((1 + sin(timeElapsed * 0.0002))/2) * 255; // Using sin to cyclically change the value based on time elapsed, casts into char
+		unsigned char blue = ((1 + sin(timeElapsed * 0.0003))/2) * 255; // Using sin to cyclically change the value based on time elapsed, casts into char
 
 		// Draw Particles
 
