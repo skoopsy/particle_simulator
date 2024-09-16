@@ -22,6 +22,7 @@ private:
 public:
 	Swarm();
 	virtual ~Swarm();
+	void update();
 
 	const Particle * const getParticles(){ return m_pParticles; };
 };
@@ -29,4 +30,3 @@ public:
 } /* namespace dave_graphics */
 
 #endif /* SWARM_H_ */
-

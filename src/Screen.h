@@ -31,6 +31,7 @@ public:
 	void setPixel(int x, int y, Uint8 red, Uint8 green, Uint8 blue); //guaranteed to be an 8bit unsigned char through SDL
 	bool processEvents();
 	void close();
+	void clear();
 };
 
 } /* namespace dave_graphics */
