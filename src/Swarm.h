@@ -18,11 +18,12 @@ public:
 
 private:
 	Particle * m_pParticles; // instance variable pointer
+	int lastTime;
 
 public:
 	Swarm();
 	virtual ~Swarm();
-	void update();
+	void update(int timeElapsed);
 
 	const Particle * const getParticles(){ return m_pParticles; };
 };
