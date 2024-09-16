@@ -31,13 +31,5 @@
 *.out
 *.app
 
-# Mac OSX
-.DS_Store
-
-# Vim
-.*.swp
-
-# Eclipse
-.settings/
-.cproject
-.project
+# Debug folder
+Debug/
