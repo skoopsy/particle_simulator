@@ -37,7 +37,7 @@ int main() {
 		int timeElapsed = SDL_GetTicks();
 
 		// Update particle positions
-		screen.clear();
+		//screen.clear();
 		swarm.update(timeElapsed);
 
 		// Cycle color values
@@ -57,6 +57,8 @@ int main() {
 
 			screen.setPixel(x, y, red, green, blue);
 		}
+
+		screen.boxBlur();
 
 		// Draw the screen
 		screen.update();
