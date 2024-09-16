@@ -51,8 +51,8 @@ int main() {
 		for(int i=0; i<dave_graphics::Swarm::N_PARTICLES; i++) {
 			dave_graphics::Particle particle = pParticles[i];
 
-			int x = (particle.m_x + 1) * dave_graphics::Screen::SCREEN_WIDTH/2;
-			int y = (particle.m_y + 1) * dave_graphics::Screen::SCREEN_HEIGHT/2;
+			int x = (particle.m_x + 1) * dave_graphics::Screen::SCREEN_WIDTH / 2;
+			int y = particle.m_y * dave_graphics::Screen::SCREEN_WIDTH / 2 + dave_graphics::Screen::SCREEN_HEIGHT / 2;
 
 			screen.setPixel(x, y, red, green, blue);
 		}
