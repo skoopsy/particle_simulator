@@ -14,7 +14,7 @@ namespace dave_graphics {
 
 class Swarm {
 public:
-	const static int N_PARTICLES = 4000;
+	const static int N_PARTICLES = 5000;
 
 private:
 	Particle * m_pParticles; // instance variable pointer
