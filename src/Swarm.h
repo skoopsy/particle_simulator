@@ -14,15 +14,16 @@ namespace dave_graphics {
 
 class Swarm {
 public:
-	const static int N_PARTICLES = 3000;
+	const static int N_PARTICLES = 5000;
 
 private:
 	Particle * m_pParticles; // instance variable pointer
+	int lastTime;
 
 public:
 	Swarm();
 	virtual ~Swarm();
-	void update();
+	void update(int timeElapsed);
 
 	const Particle * const getParticles(){ return m_pParticles; };
 };

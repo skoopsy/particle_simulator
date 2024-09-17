@@ -34,15 +34,16 @@ int main() {
 	// --- Main game loop --- //
 	while (true) {
 
+		int timeElapsed = SDL_GetTicks();
+
 		// Update particle positions
-		screen.clear();
-		swarm.update();
+		//screen.clear();
+		swarm.update(timeElapsed);
 
 		// Cycle color values
-		int timeElapsed = SDL_GetTicks();
-		unsigned char green = ((1 + sin(timeElapsed * 0.001))/2) * 255; // Using sin to cyclically change the value based on time elapsed, casts into char
-		unsigned char red = ((1 + sin(timeElapsed * 0.002))/2) * 255; // Using sin to cyclically change the value based on time elapsed, casts into char
-		unsigned char blue = ((1 + sin(timeElapsed * 0.003))/2) * 255; // Using sin to cyclically change the value based on time elapsed, casts into char
+		unsigned char green = ((1 + sin(timeElapsed * 0.0001))/2) * 255; // Using sin to cyclically change the value based on time elapsed, casts into char
+		unsigned char red = ((1 + sin(timeElapsed * 0.0002))/2) * 255; // Using sin to cyclically change the value based on time elapsed, casts into char
+		unsigned char blue = ((1 + sin(timeElapsed * 0.0003))/2) * 255; // Using sin to cyclically change the value based on time elapsed, casts into char
 
 		// Draw Particles
 
@@ -51,11 +52,13 @@ int main() {
 		for(int i=0; i<dave_graphics::Swarm::N_PARTICLES; i++) {
 			dave_graphics::Particle particle = pParticles[i];
 
-			int x = (particle.m_x + 1) * dave_graphics::Screen::SCREEN_WIDTH/2;
-			int y = (particle.m_y + 1) * dave_graphics::Screen::SCREEN_HEIGHT/2;
+			int x = (particle.m_x + 1) * dave_graphics::Screen::SCREEN_WIDTH / 2;
+			int y = particle.m_y * dave_graphics::Screen::SCREEN_WIDTH / 2 + dave_graphics::Screen::SCREEN_HEIGHT / 2;
 
 			screen.setPixel(x, y, red, green, blue);
 		}
+
+		screen.boxBlur();
 
 		// Draw the screen
 		screen.update();

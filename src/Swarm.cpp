@@ -9,19 +9,25 @@
 
 namespace dave_graphics {
 
-Swarm::Swarm() {
+Swarm::Swarm(): lastTime(0) {
 	// Allocate and fill memory with loads of particles, with rand location
 	m_pParticles = new Particle[N_PARTICLES];
+
 }
 
 Swarm::~Swarm() {
 	delete [] m_pParticles;
 }
 
-void Swarm::update() {
+void Swarm::update(int timeElapsed) {
+
+	int interval = timeElapsed - lastTime;
+
 	for(int i=0; i<dave_graphics::Swarm::N_PARTICLES; i++) {
-		m_pParticles[i].update();
+		m_pParticles[i].update(interval);
 		}
+
+	lastTime = timeElapsed;
 
 }
 
